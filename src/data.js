@@ -2001,3 +2001,18 @@ const movies = [
     score: 8
   }
 ];
+
+// function scoresAverage(moviesArray) {
+//   let average = (moviesArray.reduce((acc, currentVal) => acc + currentVal.score,0))
+//   return (average/moviesArray.length).toFixed(2)
+// }
+
+// console.log(scoresAverage(movies))
+
+// function dramaMoviesScore(moviesArray) {
+//   let dramaFilms = moviesArray.filter(film => film.genre.includes("Drama"));
+//   let dramaScore =(dramaFilms.reduce((acc, currentVal) => acc + currentVal.score,0))
+//   return (dramaScore/dramaFilms.length).toFixed(2)
+// }
+
+// console.log(dramaMoviesScore(movies))
