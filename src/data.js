@@ -2019,3 +2019,12 @@ const movies = [
 
 // moviesCopy = JSON.parse(JSON.stringify(movies));
 // console.log(moviesCopy)
+
+// function orderAlphabetically(moviesArray) {
+//   let moviesArrayCopy = JSON.parse(JSON.stringify(moviesArray));
+//   let onlyTitles = moviesArrayCopy.map(movie=>movie.title);
+//   let alphabeticalOrderTwenty = onlyTitles.sort();
+//   return alphabeticalOrderTwenty.splice(0,20)
+// }
+
+// console.log(orderAlphabetically(movies));
