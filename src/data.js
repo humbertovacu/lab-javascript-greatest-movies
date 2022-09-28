@@ -2016,3 +2016,6 @@ const movies = [
 // }
 
 // console.log(dramaMoviesScore(movies))
+
+// moviesCopy = JSON.parse(JSON.stringify(movies));
+// console.log(moviesCopy)
