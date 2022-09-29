@@ -2027,4 +2027,16 @@ const movies = [
 //   return alphabeticalOrderTwenty.splice(0,20)
 // }
 
-// console.log(orderAlphabetically(movies));
+function turnHoursToMinutes(moviesArray) {
+  let moviesArrayCopy = JSON.parse(JSON.stringify(moviesArray));
+  let hoursToMinutes = moviesArrayCopy.map(film => { 
+    let temp = film.duration[0]*60 + film.duration.slice(1)
+    let finalTemp = temp.split("h")
+    let inMinutes = Number(finalTemp[0]) + Number(finalTemp[1].slice(0,-3));
+    // let sumMin = temp.reduce((accumulator, film) => accumulator + film.duration,0);
+    return {...film ,
+  duration: inMinutes}});
+  return hoursToMinutes;
+}
+
+console.log(turnHoursToMinutes(movies));
