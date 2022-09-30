@@ -2027,16 +2027,41 @@ const movies = [
 //   return alphabeticalOrderTwenty.splice(0,20)
 // }
 
-function turnHoursToMinutes(moviesArray) {
-  let moviesArrayCopy = JSON.parse(JSON.stringify(moviesArray));
-  let hoursToMinutes = moviesArrayCopy.map(film => { 
-    let temp = film.duration[0]*60 + film.duration.slice(1)
-    let finalTemp = temp.split("h")
-    let inMinutes = Number(finalTemp[0]) + Number(finalTemp[1].slice(0,-3));
-    // let sumMin = temp.reduce((accumulator, film) => accumulator + film.duration,0);
-    return {...film ,
-  duration: inMinutes}});
-  return hoursToMinutes;
+// function turnHoursToMinutes(moviesArray) {
+//   let moviesArrayCopy = JSON.parse(JSON.stringify(moviesArray));
+//   let hoursToMinutes = moviesArrayCopy.map(film => { 
+//     let temp = film.duration[0]*60 + film.duration.slice(1)
+//     let finalTemp = temp.split("h")
+//     let inMinutes = Number(finalTemp[0]) + Number(finalTemp[1].slice(0,-3));
+//     // let sumMin = temp.reduce((accumulator, film) => accumulator + film.duration,0);
+//     return {...film ,
+//   duration: inMinutes}});
+//   return hoursToMinutes;
+// }
+
+function bestYearAvg(moviesArray) {
+  let everyYearArray = moviesArray.map(movie => movie.year);
+  let yearsInOrder = everyYearArray.sort((a,b)=>a-b);
+  let oneYearAverage = function(year){
+    let thatYearAvg = 0;
+    let count = 0;
+    moviesArray.forEach(movie=>{
+      if(movie.year === year){
+        thatYearAvg += movie.score;
+        count ++;
+      }
+    });
+    return thatYearAvg/count;
+  }
+  let yearScorePairs =[];
+  let bestYear;
+  for (let i = yearsInOrder[0]; i<=yearsInOrder[yearsInOrder.length-1];i++){
+    yearScorePairs.push([i,oneYearAverage(i)])
+    yearScorePairs.sort((a,b)=>{ if(a[1]===a[2]) return a-b;
+      else return a[1]-b[1]});
+  }
+  bestYear = yearScorePairs[yearScorePairs.length-1]
+  return `The best year was ${bestYear[0]} with an average score of ${bestYear[1]}`
 }
 
-console.log(turnHoursToMinutes(movies));
+console.log(bestYearAvg(movies));
